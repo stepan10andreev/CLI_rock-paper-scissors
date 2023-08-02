@@ -2,16 +2,22 @@ import { printError, printText, printResult, printTable } from '../services/log.
 import { ERROR_MESSAGES } from '../helpers/constants.js'
 
 export class Game {
-    constructor(moves) {
-        this.computerMove = this.getRandomArrayItem(moves);
-    }
+    // constructor(moves) {
+    //     this.computerMove = this.getRandomArrayItem(moves);
+    // }
 
-    getRandomArrayItem(array) {
+    static getRandomArrayItem(array) {
         const RANDOM_INDEX = Math.floor(Math.random() * array.length);
         return array[RANDOM_INDEX];
     }
 
+    static findReapeatingElements(array) {
+        return new Set(array).size !== array.length;
+    }
+
     static checkCLIParameters = (moves) => {
+        const REPEAT_ELEMENTS = this.findReapeatingElements(moves);
+
         if (!moves.length) {
             printError(ERROR_MESSAGES.NOT_PARAMETERS);
             return false;
@@ -20,6 +26,10 @@ export class Game {
                 printError(ERROR_MESSAGES.EVEN_PARAMETERS);
                 return false;
             } else if (moves.length >= 3 && moves.length % 2 != 0) {
+                if (REPEAT_ELEMENTS) {
+                    printError(ERROR_MESSAGES.REPEATING_PARAMETERS);
+                    return false;
+                }
                 return true;
             } else {
                 printError(ERROR_MESSAGES.UNDER_PARAMETERS);
@@ -28,10 +38,12 @@ export class Game {
         }
     }
 
-    static gameProgress = (userAnswer, table, moveResult, computerMove, secretKey) => {
+    static gameProgress = async (userAnswer, table, moveResult, computerMove, secretKey, menu) => {
         if (userAnswer === 'help') {
             printTable(table);
-            // можно здесь также сразу продолжить -  предложить выбор хода
+            // продолжение игры при выборе помощи
+            const ANSWER = await menu.showMenu();
+            this.gameProgress(ANSWER, table, moveResult, computerMove, secretKey, menu);
         } else if (userAnswer === 'exit') {
             printText(`You are out of the game`);
             return;

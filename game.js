@@ -15,7 +15,7 @@ const initCLI = async () => {
 
     const SECRET_KEY = new Key().cryptoKey;
 
-    const COMPUTER_MOVE = new Game(ARGUMENTS).computerMove;
+    const COMPUTER_MOVE = Game.getRandomArrayItem(ARGUMENTS);
 
     const HMAC_KEY = Key.generateHMAC(SECRET_KEY, COMPUTER_MOVE);
 
@@ -29,7 +29,7 @@ const initCLI = async () => {
 
     const TABLE = new Table(ARGUMENTS).table;
 
-    Game.gameProgress(ANSWER, TABLE, RESULT, COMPUTER_MOVE, SECRET_KEY)
+    Game.gameProgress(ANSWER, TABLE, RESULT, COMPUTER_MOVE, SECRET_KEY, MENU)
     
 }
 
