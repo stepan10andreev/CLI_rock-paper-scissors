@@ -28,8 +28,8 @@ export class Table {
                 moveObject[copyMoves.at(i - j)] = 'win';
             }
 
-            movesArray.push(moveObject)
-            moveObject = {}
+            movesArray.push(moveObject);
+            moveObject = {};
         }
 
         return movesArray;

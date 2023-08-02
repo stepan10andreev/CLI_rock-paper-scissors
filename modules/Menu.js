@@ -1,4 +1,4 @@
-import select, { Separator } from '@inquirer/select';
+import select from '@inquirer/select';
 
 export class Menu {
     constructor(moves) {

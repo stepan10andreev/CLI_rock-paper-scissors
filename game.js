@@ -30,21 +30,7 @@ const initCLI = async () => {
     const TABLE = new Table(ARGUMENTS).table;
 
     Game.gameProgress(ANSWER, TABLE, RESULT, COMPUTER_MOVE, SECRET_KEY)
-
-    // if (ANSWER === 'help') {
-    //     const TABLE = new Table(ARGUMENTS).table;
-    //     console.log(TABLE);
-    //     printTable(TABLE);
-    //     // можно здесь также сразу продолжить -  предложить выбор хода
-    // } else if (ANSWER === 'exit') {
-    //     return;
-    // } else {
-    //     printText(`Your move: ${ANSWER}`);
-    //     const result = new Rules(ARGUMENTS, ANSWER, COMPUTER_MOVE).getResult;
-    //     printText(`Computer move: ${COMPUTER_MOVE}`);
-    //     printResult(result);
-    //     printText(`HMAC key: ${SECRET_KEY}`);
-    // }
+    
 }
 
 initCLI();

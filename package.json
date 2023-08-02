@@ -14,11 +14,9 @@
   "author": "stepan10andreev@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "@inquirer/expand": "^1.1.6",
     "@inquirer/prompts": "^3.0.1",
     "@inquirer/select": "^1.2.6",
     "chalk": "^5.3.0",
-    "dedent": "^1.5.1",
-    "readline-sync": "^1.4.10"
+    "dedent": "^1.5.1"
   }
 }

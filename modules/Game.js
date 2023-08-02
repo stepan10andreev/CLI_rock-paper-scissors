@@ -1,4 +1,4 @@
-import { printError, printText, printResult } from '../services/log.services.js'
+import { printError, printText, printResult, printTable } from '../services/log.services.js'
 import { ERROR_MESSAGES } from '../helpers/constants.js'
 
 export class Game {
@@ -30,10 +30,10 @@ export class Game {
 
     static gameProgress = (userAnswer, table, moveResult, computerMove, secretKey) => {
         if (userAnswer === 'help') {
-            console.log(table);
             printTable(table);
             // можно здесь также сразу продолжить -  предложить выбор хода
         } else if (userAnswer === 'exit') {
+            printText(`You are out of the game`);
             return;
         } else {
             printText(`Your move: ${userAnswer}`);
